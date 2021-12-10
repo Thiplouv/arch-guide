@@ -130,6 +130,7 @@ Let's now edit the localization :
 
 As I want my system to be in English but with European features, such as metric measurements,etc... I will use the Ireland English Locale. Do as you wishes.
 
+    # Uncoment these lines:
     en_IE.UTF-8
     en_US.UTF-8
 
