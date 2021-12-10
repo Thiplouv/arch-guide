@@ -119,7 +119,7 @@ Now, we can change root into the new system:
 At this point, we can start to configure the new installed system.
 Let's start with time zone and locales.
 
-    ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+    ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
     hwclock --systohc
 
 **Note:** The above line needs a Windows registery modification if a dualboot is installed. See [this guide](https://wiki.archlinux.org/title/System_time#UTC_in_Microsoft_Windows).
