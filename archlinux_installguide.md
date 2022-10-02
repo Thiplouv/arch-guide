@@ -4,7 +4,7 @@
 ___
 ## **Pre-installation**
 > This part ensure that the iso is ready for a optimised installation.
-* Archlinux iso can be downloaded via [this French repo](http://archlinux.polymorf.fr/iso/latest/).
+* Archlinux iso can be downloaded via [this French repo](http://archlinux.mirrors.ovh.net/archlinux/iso/latest/).
 
 * Changing to **AZERTY** keyboard layout can be achieved this way: 
   >```loadkeys fr-latin1```
@@ -203,7 +203,7 @@ For a wired connection with dynamic ip address :
 For a wireless connection, run:
 
     systemctl start iwd
-    systemctl start iwctl
+    systemctl enable rfkill-unblock@all
     ping www.archlinux.org
 
 If the connection works, don't forget to enable these systemd services by replacing the _start_ command to _enable_.
@@ -256,11 +256,11 @@ Now that our new user is created and can run sudo commands, we can logout from t
 
 Before that, we need to install the X Window System (Xorg). To do so, just run:
 
-    sudo pacman -S xorg xinit
+    sudo pacman -S xorg xorg-xinit
 
-Once the operation is successful, we can install the window manager of our choice. I will go for i3wm.
+Once the operation is successful, we can install the window manager of our choice. I will go for bspwm.
 
-    sudo pacman -S i3-gaps i3lock i3status i3blocks
+    sudo pacman -S bspwm sxhkd
 
 These are the core packages for the i3 windoww manager, but I also usually install:
 
@@ -275,7 +275,7 @@ These are the core packages for the i3 windoww manager, but I also usually insta
 
 This can be done by running:
 
-    sudo pacman -S picom dmenu alacritty nitrogen git github-cli xdg-user-dirs
+    sudo pacman -S polybar picom dmenu alacritty feh git xdg-user-dirs
     xdg-user-dirs-update
 
 I usually use yay as my AUR client:
@@ -289,6 +289,13 @@ Now that all of this stuff is done, we can configure Xinit to start our window m
 
     cp /etc/X11/xinit/xinitrc ~/.xinitrc
 
+We also need to copy the default bspwm and sxhkd config files to our home directory by doing like so :
+    
+    mkdir ~/.config/bspwm
+    mkdir ~/.config/sxhkd
+    cp /usr/share/doc/bspwm/examples/bspwmrc ~/.config/bspwm/bspwmrc
+    cp /usr/share/doc/bspwm/examples/sxhkdrc ~/.config/sxhkd/sxhkdrc
+
 Now, let's replace the default configuration by ours:
 
     # Replace these lines:
@@ -301,8 +308,7 @@ Now, let's replace the default configuration by ours:
     # By those lines:
     setxkbmap -layout fr
     picom &
-    nitrogen --restore &
-    exec i3
+    exec bspwm
 
 Now, you should be able to start the newly installed window manager by running:
 
