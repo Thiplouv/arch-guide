@@ -89,7 +89,7 @@ To ensure a fast and stable connection, let's configure Pacman's mirror servers:
 
 Now we can add our prefered repository. Mine is:
 
-    Server = http://archlinux.polymorf.fr/$repo/os/$arch
+    Server = http://archlinux.mirrors.ovh.net/archlinux/$repo/os/x86_64
 
 Now that the mirror servers are configured, it's time to install essentials program, such as:
 * Linux kernel and headers,
