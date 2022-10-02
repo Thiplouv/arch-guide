@@ -192,6 +192,14 @@ Just run:
 ## **Post-installation**
 > In this part, we are going to cover some post-installation stuff that I like to do once my system restarted.
 
+### **Removing the PC Speaker BEEP**
+This is one of the most important part of the configuration imo!
+We will blacklist the pc speaker kernel module to remove the (very) anoying beep sound when backspace is entered in tty:
+
+nvim /etc/mobprobe.d/nobeep.conf
+    ----------------------
+    blacklist pcspkr
+
 ### **Internet connection**
 After logging in as root, let's start the dhcp service to and verify the internet connection:
 
