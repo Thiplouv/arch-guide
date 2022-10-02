@@ -196,7 +196,7 @@ Just run:
 This is one of the most important part of the configuration imo!
 We will blacklist the pc speaker kernel module to remove the (very) anoying beep sound when backspace is entered in tty:
 
-nvim /etc/mobprobe.d/nobeep.conf
+    nvim /etc/mobprobe.d/nobeep.conf
     ----------------------
     blacklist pcspkr
 
